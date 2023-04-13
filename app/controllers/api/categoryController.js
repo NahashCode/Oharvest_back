@@ -1,5 +1,6 @@
 import pool from '../../services/pgClient.js';
 import { Category } from '../../models/Category.js';
+import { errors } from '../../modules/errors.js';
 
 const categoryDataMapper = new Category(pool);
 
@@ -10,38 +11,57 @@ export const categoryController = {
      * @param {Response} response 
      */
     allCategory: async function (request, response) {
-        const categories = await categoryDataMapper.findAll();
+        try {
+            const categories = await categoryDataMapper.findAll();
 
-        response.json( categories );
+            response.json( categories );   
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
     },
 
     oneCategory: async function (request, response) {
-        const id = request.params.id;
+        const oneCategory = request.instance;
 
-        const oneCategory = await categoryDataMapper.findOne(id);
-        
         response.json( oneCategory );
     },
 
     createCategory: async function (request, response) {
         const { name } = request.body;
 
-        const createCategory = await categoryDataMapper.create({name});
+        if (typeof name != 'string' || name.length < 2) {
+            return errors.error400(response);
+        }
 
-        response.json( createCategory );
+        try {
+            const createCategory = await categoryDataMapper.create({name});
+
+            response.json( createCategory );
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
     },
 
     updateCategory: async function (request, response) {
-        const id = request.params.id;
+        const updateCategory = request.instance;
 
-        const updateCategory = await categoryDataMapper.findOne(id);
-        
         const { name } = request.body;
 
-        updateCategory.name = name;
+        if (typeof name != 'string' || name.length < 2) {
+            return errors.error400(response);
+        }
 
-        const result = await categoryDataMapper.update(updateCategory);
+        try {
+            updateCategory.name = name;
 
-        response.json( result );
+            const result = await categoryDataMapper.update(updateCategory);
+
+            response.json( result );
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
     },
 };

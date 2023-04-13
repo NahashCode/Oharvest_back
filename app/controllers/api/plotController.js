@@ -1,5 +1,6 @@
 import pool from '../../services/pgClient.js';
 import { Plot } from '../../models/Plot.js';
+import { errors } from '../../modules/errors.js';
 
 const plotDataMapper = new Plot(pool);
 
@@ -10,16 +11,26 @@ export const plotController = {
      * @param {Response} response 
      */
     allPlot: async function (request, response) {
-        const plot = await plotDataMapper.findAll();
+        try {
+            const plots = await plotDataMapper.findAll();
 
-        response.json( plot );
+            response.json( plots );   
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
     },
 
     onePlot: async function (request, response) {
         const id = request.params.id;
 
-        const onePlot = await plotDataMapper.findOne(id);
+        try {
+            const onePlot = await plotDataMapper.findOne(id);
 
-        response.json( onePlot );
+            response.json( onePlot );
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
     },
 };

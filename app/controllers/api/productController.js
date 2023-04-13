@@ -1,5 +1,6 @@
 import pool from '../../services/pgClient.js';
 import { Product } from '../../models/Product.js';
+import { errors } from '../../modules/errors.js';
 
 const productDataMapper = new Product(pool);
 
@@ -10,16 +11,26 @@ export const productController = {
      * @param {Response} response 
      */
     allProduct: async function (request, response) {
-        const product = await productDataMapper.findAll();
+        try {
+            const products = await productDataMapper.findAll();
 
-        response.json( product );
+            response.json( products );   
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
     },
 
     oneProduct: async function (request, response) {
         const id = request.params.id;
 
-        const oneProduct = await productDataMapper.findOne(id);
+        try {
+            const oneProduct = await productDataMapper.findOne(id);
 
-        response.json( oneProduct );
+            response.json( oneProduct );
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
     },
 };
