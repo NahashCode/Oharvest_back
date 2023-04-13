@@ -40,11 +40,11 @@ version_file_name=db_version
 
 # Use this variable for development environment to avoid the prompt or comment them if you don't need them
 # Design the user of the sql server who own the database of the project
-db_user=admin_oharvest
+#db_user=
 # Represent the database of the project
-database=oharvest
+#database=
 # The password of the sql user
-db_password=oharvest
+#db_password=
 
 #Allow you to configure which database engine you want to use for your project.
 #Uncomment the one needed
