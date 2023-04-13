@@ -22,12 +22,43 @@ export const plotController = {
     },
 
     onePlot: async function (request, response) {
-        const id = request.params.id;
+        const onePlot = request.instance;
+
+        response.json( onePlot );
+    },
+
+    createPlot: async function (request, response) {
+        const { name } = request.body;
+
+        if (typeof name != 'string' || name.length < 2) {
+            return errors.error400(response);
+        }
 
         try {
-            const onePlot = await plotDataMapper.findOne(id);
+            const createPlot = await plotDataMapper.create({name});
 
-            response.json( onePlot );
+            response.json( createPlot );
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
+    },
+
+    updatePlot: async function (request, response) {
+        const updatePlot = request.instance;
+
+        const { name } = request.body;
+
+        if (typeof name != 'string' || name.length < 2) {
+            return errors.error400(response);
+        }
+
+        try {
+            updatePlot.name = name;
+
+            const result = await plotDataMapper.update(updatePlot);
+
+            response.json( result );
 
         } catch(error) {
             errors.error500(response, error);
