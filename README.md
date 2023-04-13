@@ -30,6 +30,13 @@ For the development environment, it is recommended to copy the script, uncomment
 #db_password=
 ```
 
+Some data are available inside the folder `data`. To populate the database, run :
+
+```shell
+# Replace  <database_admin> and <database_name> by their corresponding value
+psql -U <database_admin> -d <database_name> -f data/seed.sql
+```
+
 ## Starting the server
 
 You need to configure the .env file.
