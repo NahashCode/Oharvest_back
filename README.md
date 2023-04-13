@@ -4,7 +4,7 @@
 
 ### NPM
 
-Install, in a first time, all packages mandatory with :
+Install all mandatory packages, in a first time :
 
 ```shell
 npm install
@@ -12,26 +12,15 @@ npm install
 
 ### Database
 
-This projet came with a script, named `sqitch_script.sh`, which work with [sqitch](https://sqitch.org/docs/).
+This projet work with a versioning tool for database named sqitch. The process of installation can be done by following the [official documentation](https://sqitch.org/download/).
 
-In order to install sqitch, follow the [official documentation](https://sqitch.org/download/).
-
-When it is done, you need to build the database. Execute the following command.
+A script, named `sqitch_script.sh`, is served as interface for sqitch. The database can be build with the following command :
 
 ```shell
-bash sqitch_script.sh 
+npm run db:build
 ```
 
-Select the init option. It will ask you which postgres administrator, you want to use for create the new database with his owner. When the process end, you need to deploy all versions with this command :
-
-```shell
-bash sqitch_script.sh -d
-```
-
-Select 1 for deploying all versions.
-
-
-For the development environment, it is recommended to copy the script, uncomment the following variables (line 43, 45 and 47) and assign them a value:
+For the development environment, it is recommended to copy the script, uncomment the following variables (line 43, 45 and 47) and assign them a value. Don't forget to add this script inside the `.gitignore`.
 ```shell
 # Design the user of the sql server who own the database of the project
 #db_user=
@@ -45,7 +34,7 @@ For the development environment, it is recommended to copy the script, uncomment
 
 You need to configure the .env file.
 
-First, duplicate the file `.env.example` with a new name `.env`. Give all variables the correct values.
+Duplicate the file `.env.example` with a new name `.env`. Give all variables the correct values.
 
 Then :
 
