@@ -92,11 +92,11 @@ function command_sqitch_init {
     read -rp "The admin to connect >> " admin
 
     if [ -z ${db_user+x} ]; then
-        read -rp 'Database user >> ' db_user
+        read -rp 'Database user who will be the admin of the future database >> ' db_user
     fi
 
     if [ -z ${database+x} ]; then
-        read -rp 'Database password >> ' database
+        read -rp 'Database password for this user >> ' database
     fi
 
     dropdb "$database" --if-exists -U "$admin"
@@ -149,11 +149,10 @@ function command_sqitch_action {
     printf "%b" "\a\nSelect a stage to process:\n" >&2
     select file in $file_list; do
         if [ -z ${db_user+x} ]; then
-            read -rp 'Database user : ' db_user
+            read -rp 'User who own the registered database : ' db_user
         fi
         if [ -z ${db_password+x} ]; then
-            read -rsp 'Database password : ' db_password
-            echo "Password registered"
+            read -rsp 'Password : ' db_password
         fi
 
         export PGUSER=$db_user
@@ -174,6 +173,8 @@ function command_sqitch_action {
 # -------------------------------------------------------------------------------#
 # Main Script                                                                         #
 # -------------------------------------------------------------------------------#
+PS3='Action to execute > '
+
 if [ $# -gt 1 ]; then
     echo 'Too many arguments'
     exit 1
@@ -193,13 +194,13 @@ elif [ $# -eq 1 ] && [ "$init_setup" ]; then
         ;;
     -h)
         help_message
-        exit 0
         ;;
     *)
         printf "Error: Argument invalid !\n"
         exit 1
         ;;
     esac
+    exit 0
 fi
 
 PS3='Action to execute > '

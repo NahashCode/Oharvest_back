@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "db:build": "npm run db:init && npm run db:deploy",
+    "db:init": "bash sqitch_script.sh",
+    "db:deploy": "bash sqitch_script.sh -d"
   },
   "keywords": [],
   "author": "",
