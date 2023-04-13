@@ -22,4 +22,26 @@ export const categoryController = {
         
         response.json( oneCategory );
     },
+
+    createCategory: async function (request, response) {
+        const { name } = request.body;
+
+        const createCategory = await categoryDataMapper.create({name});
+
+        response.json( createCategory );
+    },
+
+    updateCategory: async function (request, response) {
+        const id = request.params.id;
+
+        const updateCategory = await categoryDataMapper.findOne(id);
+        
+        const { name } = request.body;
+
+        updateCategory.name = name;
+
+        const result = await categoryDataMapper.update(updateCategory);
+
+        response.json( result );
+    },
 };

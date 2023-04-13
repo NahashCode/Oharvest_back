@@ -12,4 +12,8 @@ apiCategoryRouter.get('/', categoryController.allCategory);
  */
 apiCategoryRouter.get('/:id', categoryController.oneCategory);
 
+apiCategoryRouter.post('/', categoryController.createCategory);
+
+apiCategoryRouter.put('/:id', categoryController.updateCategory)
+
 export { apiCategoryRouter };
