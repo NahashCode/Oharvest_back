@@ -1,5 +1,6 @@
 import { Router} from 'express';
 import { plotController } from '../../controllers/api/plotController.js';
+import { productInPlotController } from '../../controllers/api/productInPlotController.js';
 import { plotMiddleware } from '../../middlewares/plotMiddleware.js';
 import { plotValidate } from '../../services/validator/plot/validate.js';
 
@@ -17,5 +18,10 @@ apiPlotRouter.param('id', plotMiddleware.loadPlot);
  */
 apiPlotRouter.get('/:id(\\d+)', plotController.onePlot);
 apiPlotRouter.put('/:id(\\d+)', plotValidate.validateBody, plotController.updatePlot);
+
+/**
+ * Route : /api/plots/products
+ */
+apiPlotRouter.get('/products', productInPlotController.allProductsInPlot);
 
 export { apiPlotRouter };

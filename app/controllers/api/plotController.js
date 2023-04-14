@@ -52,4 +52,15 @@ export const plotController = {
             errors.error500(response, error);
         }
     },
+
+    productsInPlot: async function (request, response) {
+        try {
+            const productsInPlot = await plotDataMapper.findAll();
+
+            response.json( productsInPlot );   
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
+    },
 };

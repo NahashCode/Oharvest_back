@@ -30,3 +30,13 @@ INSERT INTO
 VALUES
     ('canada', '2023-01-01', '2023-02-01', 4),
     ('jonagored', '2023-03-01', '2023-04-01', 4);
+
+INSERT INTO
+    product_in_plot (product_id, plot_id)
+VALUES
+    (1,1),
+    (2,2),
+    (3,2),
+    (5,2),
+    (8,3),
+    (9,3);
