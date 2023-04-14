@@ -22,12 +22,31 @@ export const productController = {
     },
 
     oneProduct: async function (request, response) {
-        const id = request.params.id;
+        const oneProduct = request.instance;
+
+        response.json( oneProduct );
+    },
+
+    createProduct: async function (request, response) {
+        try {
+            const createProduct = await productDataMapper.create(request.body);
+
+            response.json( createProduct );
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
+    },
+
+    updateProduct: async function (request, response) {
+        const productFound = request.instance;
+
+        const updatedProduct = {...productFound, ...request.body};
 
         try {
-            const oneProduct = await productDataMapper.findOne(id);
+            const result = await productDataMapper.update(updatedProduct);
 
-            response.json( oneProduct );
+            response.json( result );
 
         } catch(error) {
             errors.error500(response, error);
