@@ -1,7 +1,7 @@
 import { Router} from 'express';
 import { varietyController } from '../../controllers/api/varietyController.js';
 import { varietyMiddleware } from '../../middlewares/varietyMiddleware.js';
-import { varietyValidate } from '../../services/validator/product/validate.js';
+import { varietyValidate } from '../../services/validator/variety/validate.js';
 
 const apiVarietyRouter = Router();
 
