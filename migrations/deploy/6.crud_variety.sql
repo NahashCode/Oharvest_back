@@ -17,9 +17,9 @@ CREATE OR REPLACE FUNCTION variety_update(v json) RETURNS variety AS $$
     UPDATE variety
         SET 
         name=v->>'name',
-        harvestBeginAt=(v->>'harvestBeginAt')::int,
-        harvestEndAt=(v->>'harvestEndAt')::int,
-        product=(v->>'productId')::int
+        harvest_begin_at=(v->>'harvestBeginAt')::date,
+        harvest_end_at=(v->>'harvestEndAt')::date,
+        product_id=(v->>'productId')::int
         WHERE id=(v->>'id')::int
         RETURNING *;
 $$ LANGUAGE SQL;
