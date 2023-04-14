@@ -1,8 +1,5 @@
-import pool from '../services/pgClient.js';
-import { Category } from '../models/Category.js';
-import { errors } from '../modules/errors.js';
-
-const categoryDataMapper = new Category(pool);
+import { categoryDataMapper } from '../models/Category.js';
+import { APIError } from '../services/error/APIError.js';
 
 export const categoryMiddleware = {
     /**
@@ -21,10 +18,10 @@ export const categoryMiddleware = {
                 request.instance = categoryFound;
                 next();
             } else {
-                errors.error400(response);
+                next(new APIError('Category not found', 400));
             }
         } catch(error){
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }       
     }
 };

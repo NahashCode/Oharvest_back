@@ -1,8 +1,5 @@
-import pool from '../../services/pgClient.js';
-import { Variety } from '../../models/Variety.js';
-import { errors } from '../../modules/errors.js';
-
-const varietyDataMapper = new Variety(pool);
+import { varietyDataMapper } from '../../models/Variety.js';
+import { APIError } from '../../services/error/APIError.js';
 
 export const varietyController = {
     /**
@@ -10,14 +7,14 @@ export const varietyController = {
      * @param {Request} request 
      * @param {Response} response 
      */
-    allVariety: async function (request, response) {
+    allVariety: async function (request, response, next) {
         try {
             const varieties = await varietyDataMapper.findAll();
 
             response.json( varieties );   
 
         } catch(error) {
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }
     },
 
@@ -27,18 +24,18 @@ export const varietyController = {
         response.json( oneVAriety );
     },
 
-    createVariety: async function (request, response) {
+    createVariety: async function (request, response, next) {
         try {
             const createVariety = await varietyDataMapper.create(request.body);
 
             response.json( createVariety );
 
         } catch(error) {
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }
     },
 
-    updateVariety: async function (request, response) {
+    updateVariety: async function (request, response, next) {
         const varietyFound = request.instance;
 
         const updatedVariety = {...varietyFound, ...request.body};
@@ -49,7 +46,7 @@ export const varietyController = {
             response.json( result );
 
         } catch(error) {
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }
     },
 };

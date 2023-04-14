@@ -1,23 +1,21 @@
-import pool from '../../services/pgClient.js';
-import { Category } from '../../models/Category.js';
-import { errors } from '../../modules/errors.js';
-
-const categoryDataMapper = new Category(pool);
+import { categoryDataMapper } from '../../models/Category.js';
+import { APIError } from '../../services/error/APIError.js';
 
 export const categoryController = {
     /**
      * Return a json response with all categories presents in the database.
-     * @param {Request} request 
-     * @param {Response} response 
+     * @param {Request} request
+     * @param {Response} response
+     * @param {NextFunction} next
      */
-    allCategory: async function (request, response) {
+    allCategory: async function (request, response, next) {
         try {
             const categories = await categoryDataMapper.findAll();
 
             response.json( categories );   
 
         } catch(error) {
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }
     },
 
@@ -27,17 +25,17 @@ export const categoryController = {
         response.json( oneCategory );
     },
 
-    createCategory: async function (request, response) {
+    createCategory: async function (request, response, next) {
         try {
             const createCategory = await categoryDataMapper.create(request.body);
 
             response.json( createCategory );
         } catch(error) {
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }
     },
 
-    updateCategory: async function (request, response) {
+    updateCategory: async function (request, response, next) {
         const categoryFound = request.instance;
 
         const updatedCategory = { ...categoryFound, ...request.body };
@@ -47,7 +45,7 @@ export const categoryController = {
 
             response.json( result );
         } catch(error) {
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }
     },
 };
