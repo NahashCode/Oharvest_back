@@ -3,3 +3,4 @@ sqitch add 2.function_select -n "Creation of select function for category, plot,
 sqitch add 3.crud_category -n "crud function to the category table"
 sqitch add 4.crud_plot -n "crud function for the plot table"
 sqitch add 5.crud_product -n "crud function for the product table"
+sqitch add 6.crud_variety -n "crud function for variety table"

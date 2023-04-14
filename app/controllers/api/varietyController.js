@@ -22,12 +22,31 @@ export const varietyController = {
     },
 
     oneVariety: async function (request, response) {
-        const id = request.params.id;
+        const oneVAriety = request.instance;
+
+        response.json( oneVAriety );
+    },
+
+    createVariety: async function (request, response) {
+        try {
+            const createVariety = await varietyDataMapper.create(request.body);
+
+            response.json( createVariety );
+
+        } catch(error) {
+            errors.error500(response, error);
+        }
+    },
+
+    updateVariety: async function (request, response) {
+        const varietyFound = request.instance;
+
+        const updatedVariety = {...varietyFound, ...request.body};
 
         try {
-            const oneVariety = await varietyDataMapper.findOne(id);
+            const result = await varietyDataMapper.update(updatedVariety);
 
-            response.json( oneVariety );
+            response.json( result );
 
         } catch(error) {
             errors.error500(response, error);
