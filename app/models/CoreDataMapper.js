@@ -28,7 +28,7 @@ export class CoreDataMapper{
 
         const result = await this.client.query(query, values);
         
-        return result.rows;
+        return result.rows[0];
     }
 
     async update(entity){

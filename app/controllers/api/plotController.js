@@ -28,14 +28,8 @@ export const plotController = {
     },
 
     createPlot: async function (request, response) {
-        const { name } = request.body;
-
-        if (typeof name != 'string' || name.length < 2) {
-            return errors.error400(response);
-        }
-
         try {
-            const createPlot = await plotDataMapper.create({name});
+            const createPlot = await plotDataMapper.create(request.body);
 
             response.json( createPlot );
 
@@ -45,18 +39,12 @@ export const plotController = {
     },
 
     updatePlot: async function (request, response) {
-        const updatePlot = request.instance;
+        const plotFound = request.instance;
 
-        const { name } = request.body;
-
-        if (typeof name != 'string' || name.length < 2) {
-            return errors.error400(response);
-        }
+        const updatedPlot = { ...plotFound, ...request.body};
 
         try {
-            updatePlot.name = name;
-
-            const result = await plotDataMapper.update(updatePlot);
+            const result = await plotDataMapper.update(updatedPlot);
 
             response.json( result );
 

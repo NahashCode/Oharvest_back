@@ -28,38 +28,24 @@ export const categoryController = {
     },
 
     createCategory: async function (request, response) {
-        const { name } = request.body;
-
-        if (typeof name != 'string' || name.length < 2) {
-            return errors.error400(response);
-        }
-
         try {
-            const createCategory = await categoryDataMapper.create({name});
+            const createCategory = await categoryDataMapper.create(request.body);
 
             response.json( createCategory );
-
         } catch(error) {
             errors.error500(response, error);
         }
     },
 
     updateCategory: async function (request, response) {
-        const updateCategory = request.instance;
+        const categoryFound = request.instance;
 
-        const { name } = request.body;
-
-        if (typeof name != 'string' || name.length < 2) {
-            return errors.error400(response);
-        }
+        const updatedCategory = { ...categoryFound, ...request.body };
 
         try {
-            updateCategory.name = name;
-
-            const result = await categoryDataMapper.update(updateCategory);
+            const result = await categoryDataMapper.update(updatedCategory);
 
             response.json( result );
-
         } catch(error) {
             errors.error500(response, error);
         }
