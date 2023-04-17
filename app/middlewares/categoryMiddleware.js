@@ -1,8 +1,6 @@
-import pool from '../services/pgClient.js';
-import { Category } from '../models/Category.js';
+import { categoryDataMapper } from '../models/Category.js';
 import { errors } from '../modules/errors.js';
 
-const categoryDataMapper = new Category(pool);
 
 export const categoryMiddleware = {
     /**

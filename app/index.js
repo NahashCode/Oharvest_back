@@ -3,7 +3,7 @@ import cors from 'cors';
 
 const app = express();
 
-import mainRouter from './routers/main.router.js';
+// import adminRouter from './routers/backoffice/admin.router.js';
 import { apiRouter } from './routers/api/router.js';
 import { swaggerRouter } from './routers/swagger.router.js';
 
@@ -15,8 +15,10 @@ app.use(express.static('public'));
 app.use(cors());
 app.use(express.json());
 
-app.use(mainRouter);
+// app.use(adminRouter);
+
 app.use('/api', apiRouter);
+// app.use('/admin', adminRouter);
 
 app.use('/docs/api', swaggerRouter);
 

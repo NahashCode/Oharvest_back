@@ -1,8 +1,5 @@
-import pool from '../../services/pgClient.js';
-import { Variety } from '../../models/Variety.js';
+import { varietyDataMapper } from '../../models/Variety.js';
 import { errors } from '../../modules/errors.js';
-
-const varietyDataMapper = new Variety(pool);
 
 export const varietyController = {
     /**

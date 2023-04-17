@@ -1,8 +1,5 @@
-import pool from '../services/pgClient.js';
-import { Plot } from '../models/Plot.js';
+import { plotDataMapper } from '../models/Plot.js';
 import { errors } from '../modules/errors.js';
-
-const plotDataMapper = new Plot(pool);
 
 export const plotMiddleware = {
     /**

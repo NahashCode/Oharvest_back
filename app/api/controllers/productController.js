@@ -1,8 +1,5 @@
-import pool from '../../services/pgClient.js';
-import { Product } from '../../models/Product.js';
+import { productDataMapper } from '../../models/Product.js';
 import { errors } from '../../modules/errors.js';
-
-const productDataMapper = new Product(pool);
 
 export const productController = {
     /**

@@ -1,8 +1,5 @@
-import pool from '../../services/pgClient.js';
-import { ProductInPlot } from '../../models/ProductInPlot.js';
+import { productInPlotDataMapper } from '../../models/ProductInPlot.js';
 import { errors } from '../../modules/errors.js';
-
-const productInPlotDataMapper = new ProductInPlot(pool);
 
 export const productInPlotController = {
     /**
