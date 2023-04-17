@@ -49,4 +49,15 @@ export const productController = {
             next(new APIError('Internal server error', 500));
         }
     },
+
+    allProductAvailable: async function (request, response, next) {
+        try {
+            const products = await productDataMapper.findAllProductAvailable();
+
+            response.json( products );
+
+        } catch(error) {
+            next(new APIError('Internal server error', 500));
+        }
+    },
 };
