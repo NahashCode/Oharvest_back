@@ -12,8 +12,10 @@ export const productMiddleware = {
     * @param {Number} id Id of a product
     */
     async loadProduct(request, response, next, id){
+       
         try {
             const productFound = await productDataMapper.findOne(id);
+
             if (productFound) {
                 request.instance = productFound;
                 next();

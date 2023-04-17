@@ -10,14 +10,14 @@ export const errorHandling = {
      */
     manage(error, request, response, _){
         switch (error.statusCode) {
-        case 403:
+        case 400:
             response.status(400).json('Bad request');
             break;
         case 404:
             response.status(404).json('Element not found');
             break;
         default:
-            response.status(error.code).json('Internal server error');
+            response.status(error.statusCode).json('Internal server error');
             break;
         }
     },
