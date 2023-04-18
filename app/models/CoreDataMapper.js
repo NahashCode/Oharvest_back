@@ -39,4 +39,13 @@ export class CoreDataMapper{
 
         return result.rows[0];
     }
+
+    async delete(entity){
+        const query = `SELECT * FROM ${this.tableName}_delete($1)`;
+        const values = [entity];
+
+        const result = await this.client.query(query, values);
+
+        return result.rows[0];
+    }
 }
