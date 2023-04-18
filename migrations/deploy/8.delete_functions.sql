@@ -40,7 +40,7 @@ $$ LANGUAGE SQL;
 CREATE OR REPLACE FUNCTION plot_delete(pp json) RETURNS plot AS $$
     DELETE  
     FROM plot pl
-    WHERE pl.id=(pp->>'id')::int 
+    WHERE pl.id=(pp->>'id')::int
     RETURNING *;
 $$ LANGUAGE SQL;
 
