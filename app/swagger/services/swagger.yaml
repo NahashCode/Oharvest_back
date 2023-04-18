@@ -68,6 +68,8 @@ components:
           example: 2023-02-01
         category:
           $ref: '#/components/schemas/Category'
+        variety:
+          $ref: '#/components/schemas/Variety'
     ProductInPlot:
       title: Product in plot
       type: object
@@ -97,8 +99,6 @@ components:
           type: string
           format: date
           example: 2023-02-01
-        product:
-          $ref: '#/components/schemas/Product'
 
 paths:
   /api/categories:
@@ -150,6 +150,7 @@ paths:
                 type: array
                 items:
                   $ref: '#components/schemas/Product'
+
   /api/products/available:
     get:
       description: Return a list with all products which are available
