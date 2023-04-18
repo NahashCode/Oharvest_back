@@ -52,7 +52,7 @@ export const categoryController = {
 
     deleteAction: async function (request, response, next) {
         const categoryFound = request.instance;
-
+        console.log(categoryFound);
         try {
             await categoryDataMapper.delete(categoryFound);
 
