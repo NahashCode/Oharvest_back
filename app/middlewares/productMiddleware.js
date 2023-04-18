@@ -1,5 +1,5 @@
 import { productDataMapper } from '../models/Product.js';
-import { errors } from '../modules/errors.js';
+import { APIError } from '../services/error/APIError.js';
 
 export const productMiddleware = {
     /**
@@ -18,10 +18,10 @@ export const productMiddleware = {
                 request.instance = productFound;
                 next();
             } else {
-                errors.error400(response);
+                next(new APIError('Bad request', 400));
             }
         } catch(error){
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }       
     }
 };

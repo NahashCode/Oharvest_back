@@ -1,5 +1,5 @@
 import { plotDataMapper } from '../models/Plot.js';
-import { errors } from '../modules/errors.js';
+import { APIError } from '../services/error/APIError.js';
 
 export const plotMiddleware = {
     /**
@@ -18,10 +18,10 @@ export const plotMiddleware = {
                 request.instance = plotFound;
                 next();
             } else {
-                errors.error400(response);
+                next(new APIError('Bad request', 400));
             }
         } catch(error){
-            errors.error500(response, error);
+            next(new APIError('Internal server error', 500));
         }       
     }
 };

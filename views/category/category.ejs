@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
-    <title>Document</title>
-</head>
+<%- include('../partials/header'); %>
+
 <body class="container">
     <aside>
-        <a href="/">Home</a>
-        Categories
+        <a href="/admin">Home</a>
+        Catégories
     </aside>
     <main class="content">
         <h1>Liste des catégories</h1>
-        <a href="#" class="button is-info">Ajouter une nouvelle catégorie</a>
+        <%- include('../components/btn_link', {link: `categories/create`, title: 'Ajouter une nouvelle catégorie', icon: 'mdi-new-box', className: 'is-info'}); %>
         <table class="table">
             <thead>
                 <th>Id</th>
@@ -30,22 +20,10 @@
                     <th><%= category.id %></th>
                     <td><%= category.name %></td>
                     <td>
-                        <a href="/categories/<%= category.id %>" class="button is-success">
-                            <span class="icon-text">
-                                <span class="icon">
-                                    <i class="mdi mdi-pencil"></i>
-                                </span>
-                                <span>Editer</span>
-                            </span>
-                        </a>
-                        <a href="#" class="button is-danger">
-                            <span class="icon-text">
-                                <span class="icon">
-                                    <i class="mdi mdi-delete"></i>
-                                </span>
-                                <span>Supprimer</span>
-                            </span>
-                        </a>  
+                        <%- include('../components/btn_link', {link: `categories/${category.id}/edit`, title: 'Editer', icon: 'mdi-pencil', className: 'is-success'}); %>
+
+                        <%- include('../components/btn_link', {link: `categories/${category.id}/delete`, title: 'Supprimer', icon: 'mdi-delete', className: 'is-danger'}); %>
+                        
                     </td>
                 </tr>
                 <% } %>

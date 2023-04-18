@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link href="/css/fontawesome/css/all.css" rel="stylesheet">
+<%- include('./partials/header'); %>
 
-    <!-- <link href="/css/icons/solid.css" rel="stylesheet"> -->
-    <title>Document</title>
-</head>
 <body class="container">
     <aside>
         Hello world
@@ -18,19 +7,19 @@
     <main class="content">
         <div class="card">
             <h2 class="card__title">Consulter les produits</h2>
-            <a href="/products"><i class="fa fa-eye"></i>Voir la liste des produits</a>
+            <%- include('./components/btn_link', {link: 'products', title: 'Voir la liste des produits', icon: 'mdi-eye-outline'}); %>
         </div>
         <div class="card">
             <h2 class="card__title">Consulter les catégories</h2>
-            <a href="/categories"><i class="fa-solid fa-eye"></i>Voir la liste des catégories</a>
+            <%- include('./components/btn_link', {link: 'categories', title: 'Voir la liste des catégories', icon: 'mdi-eye-outline'}); %>
         </div>
         <div class="card">
             <h2 class="card__title">Consulter les parcelles</h2>
-            <a href="/plots"><i class="fa-solid fa-eye"></i>Voir la liste des parcelles</a>
+            <%- include('./components/btn_link', {link: 'plots', title: 'Voir la liste des parcelles', icon: 'mdi-eye-outline'}); %>
         </div>
         <div class="card">
             <h2 class="card__title">Consulter les variétés</h2>
-            <a href="/varieties"><i class="fa-solid fa-eye"></i>Voir la liste des variétés</a>
+            <%- include('./components/btn_link', {link: 'varieties', title: 'Voir la liste des variétés', icon: 'mdi-eye-outline'}); %>
         </div>
     </main>
 </body>

@@ -1,5 +1,5 @@
 import { Router} from 'express';
-import { adminController } from '../../controllers/adminController.js';
+import { adminController } from '../controllers/adminController.js';
 import { categoryRouter } from './category.router.js';
 import { plotRouter } from './plot.router.js';
 import { productRouter } from './product.router.js';
