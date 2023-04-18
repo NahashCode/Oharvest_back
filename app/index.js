@@ -4,7 +4,7 @@ import cors from 'cors';
 const app = express();
 
 // import adminRouter from './routers/backoffice/admin.router.js';
-import { apiRouter } from './routers/api/router.js';
+import { apiRouter } from './api/routers/router.js';
 import { swaggerRouter } from './routers/swagger.router.js';
 
 app.set('view engine', 'ejs');

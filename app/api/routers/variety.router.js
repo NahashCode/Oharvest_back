@@ -1,5 +1,5 @@
 import { Router} from 'express';
-import { varietyController } from '../../controllers/api/varietyController.js';
+import { varietyController } from '../controllers/varietyController.js';
 import { varietyMiddleware } from '../../middlewares/varietyMiddleware.js';
 import { varietyValidate } from '../../services/validator/variety/validate.js';
 

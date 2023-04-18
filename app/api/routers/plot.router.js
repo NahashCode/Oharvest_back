@@ -1,6 +1,6 @@
 import { Router} from 'express';
-import { plotController } from '../../controllers/api/plotController.js';
-import { productInPlotController } from '../../controllers/api/productInPlotController.js';
+import { plotController } from '../controllers/plotController.js';
+import { productInPlotController } from '../controllers/productInPlotController.js';
 import { plotMiddleware } from '../../middlewares/plotMiddleware.js';
 import { plotValidate } from '../../services/validator/plot/validate.js';
 
