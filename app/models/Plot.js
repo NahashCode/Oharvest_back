@@ -1,7 +1,7 @@
 import { CoreDataMapper } from './CoreDataMapper.js';
 import pool from '../services/pgClient.js';
 
-export class Plot extends CoreDataMapper {
+class Plot extends CoreDataMapper {
     tableName = 'plot';
 }
 

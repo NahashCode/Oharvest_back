@@ -89,14 +89,15 @@ function help_message {
 # - create a versioning script mandatory for the use of this script or execute it if it exist
 # - delete sqitch.conf and sqitch.plan if exist and create them with new setup
 function command_sqitch_init {
-    read -rp "The admin to connect >> " admin
+    echo "Answer all input to create the administrator and the database :"
+    read -rp "The main administrator to connect who create the following user and database >> " admin
 
     if [ -z ${db_user+x} ]; then
-        read -rp 'Database user who will be the admin of the future database >> ' db_user
+        read -rp 'User who will be the admin of the future database >> ' db_user
     fi
 
     if [ -z ${database+x} ]; then
-        read -rp 'Database password for this user >> ' database
+        read -rp 'Database used for this project >> ' database
     fi
 
     dropdb "$database" --if-exists -U "$admin"
@@ -180,6 +181,9 @@ if [ $# -gt 1 ]; then
     exit 1
 elif [ $# -eq 1 ] && [ "$init_setup" ]; then
     case $1 in
+    -i)
+        command_sqitch_init
+        ;;
     -a)
         command_sqitch_add
         ;;

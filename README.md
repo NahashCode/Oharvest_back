@@ -17,10 +17,17 @@ This projet work with a versioning tool for database named sqitch. The process o
 A script, named `sqitch_script.sh`, is served as interface for sqitch. The database can be build with the following command :
 
 ```shell
-npm run db:build
+npm run db:prod:build
 ```
 
+It will prompt you differents questions. Fill with the corresponding answer.
+
+- The first step will create a new user with his corresponding database
+- The second step will ask you which version you wish to deploy. For all, answer 1.
+- The last one will seed the database.
+
 For the development environment, it is recommended to copy the script, uncomment the following variables (line 43, 45 and 47) and assign them a value. Don't forget to add this script inside the `.gitignore`.
+
 ```shell
 # Design the user of the sql server who own the database of the project
 #db_user=
@@ -30,20 +37,15 @@ For the development environment, it is recommended to copy the script, uncomment
 #db_password=
 ```
 
-Some data are available inside the folder `data`. To populate the database, run :
-
-```shell
-# Replace  <database_admin> and <database_name> by their corresponding value
-psql -U <database_admin> -d <database_name> -f data/seed.sql
-```
-
-## Starting the server
+### .env file
 
 You need to configure the .env file.
 
 Duplicate the file `.env.example` with a new name `.env`. Give all variables the correct values.
 
-Then :
+## Starting the server
+
+To start the server, execute :
 
 ```shell
 npm run start

@@ -6,6 +6,7 @@ const app = express();
 import adminRouter from './backoffice/routers/router.js';
 import { apiRouter } from './api/routers/router.js';
 import { swaggerRouter } from './swagger/routers/swagger.router.js';
+import { errorHandling } from './services/error/errorHandling.js';
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -24,5 +25,8 @@ app.use('/admin', adminRouter);
 
 /** Route dedicated for the Swagger service */
 app.use('/docs/api', swaggerRouter);
+
+app.use(errorHandling.notFound);
+app.use(errorHandling.manage);
 
 export default app;

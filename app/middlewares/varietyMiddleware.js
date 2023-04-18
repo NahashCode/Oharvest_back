@@ -18,7 +18,7 @@ export const varietyMiddleware = {
                 request.instance = varietyFound;
                 next();
             } else {
-                next(new APIError('Bad request', 400));
+                next(new APIError('Variety not found', 400));
             }
         } catch(error){
             next(new APIError('Internal server error', 500));

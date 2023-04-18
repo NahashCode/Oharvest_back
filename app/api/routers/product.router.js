@@ -11,6 +11,11 @@ const apiProductRouter = Router();
 apiProductRouter.get('/', productController.allProduct);
 apiProductRouter.post('/', productValidate.validateBody, productController.createProduct);
 
+/**
+ * Route : /api/products/available
+ */
+apiProductRouter.get('/available', productController.allProductAvailable);
+
 apiProductRouter.param('id', productMiddleware.loadProduct);
 /**
  * Route : /api/products/:id
