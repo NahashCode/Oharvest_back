@@ -51,7 +51,7 @@ components:
           example: false
         image:
           type: string
-          example: 'images/tomates.png'
+          example: 'tomates.png'
         feature:
           type: string
           example: Lorem ipsum
@@ -68,6 +68,17 @@ components:
           example: 2023-02-01
         category:
           $ref: '#/components/schemas/Category'
+    ProductInPlot:
+      title: Product in plot
+      type: object
+      properties:
+        plotId:
+          type: number
+          example: 1
+        products:
+          type: array
+          items: 
+            $ref: '#/components/schemas/Product'
     Variety:
       title: Variety
       type: object
@@ -123,13 +134,25 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                items:
-                  $ref: '#components/schemas/Category'
+                $ref: '#components/schemas/Category'
 
   /api/products:
     get:
       description: Return a list with all products
+      tags:
+        - product
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+  /api/products/available:
+    get:
+      description: Return a list with all products which are available
       tags:
         - product
       responses:
@@ -160,9 +183,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                items:
-                  $ref: '#components/schemas/Product'
+                $ref: '#components/schemas/Product'
 
   /api/plots:
     get:
@@ -178,6 +199,20 @@ paths:
                 type: array
                 items:
                   $ref: '#components/schemas/Plot'
+  /api/plots/products:
+    get:
+      description: Return a list with all plots with their associated products
+      tags:
+        - plot
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/ProductInPlot'
 
   /api/plots/{id}:
     parameters:
@@ -197,9 +232,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                items:
-                  $ref: '#components/schemas/Plot'
+                $ref: '#components/schemas/Plot'
 
   /api/varieties:
     get:
@@ -234,6 +267,4 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                items:
-                  $ref: '#components/schemas/Variety'
+                $ref: '#components/schemas/Variety'

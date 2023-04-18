@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const swaggerFile = join(__dirname, '../swagger','/swagger.yaml');
+const swaggerFile = join(__dirname, '/swagger.yaml');
 
 const file = fs.readFileSync(swaggerFile, 'utf8');
 const swaggerDocument = YAML.parse(file);
