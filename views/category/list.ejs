@@ -20,10 +20,11 @@
                     <th><%= category.id %></th>
                     <td><%= category.name %></td>
                     <td>
+                        <%- include('../components/btn_link', {link: `categories/${category.id}/detail`, title: 'Voir le détail', icon: 'mdi-eye-outline', className: 'is-info'}); %> 
+
                         <%- include('../components/btn_link', {link: `categories/${category.id}/edit`, title: 'Editer', icon: 'mdi-pencil', className: 'is-success'}); %>
 
-                        <%- include('../components/btn_link', {link: `categories/${category.id}/delete`, title: 'Supprimer', icon: 'mdi-delete', className: 'is-danger'}); %>
-                        
+                        <%- include('../components/btn_link', {link: `categories/${category.id}/delete`, title: 'Supprimer', icon: 'mdi-delete', className: 'is-danger'}); %>   
                     </td>
                 </tr>
                 <% } %>
