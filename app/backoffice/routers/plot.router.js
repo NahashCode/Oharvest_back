@@ -12,6 +12,10 @@ plotRouter.get('/', plotController.listPage);
 plotRouter.get('/create', plotController.createPage);
 plotRouter.post('/create', plotValidate.validateBody, plotController.createAction);
 
+plotRouter.get('/products', plotController.productsPage);
+plotRouter.post('/products/delete', plotController.removeProductAction);
+plotRouter.post('/products/add', plotController.addProductAction);
+
 plotRouter.param('id', plotMiddleware.loadPlot);
 plotRouter.get('/:id(\\d+)/detail', plotController.detailPage);
 /**

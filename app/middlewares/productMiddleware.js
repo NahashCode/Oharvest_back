@@ -12,7 +12,7 @@ export const productMiddleware = {
     * @param {Number} id Id of a product
     */
     async loadProduct(request, response, next, id){
-       
+    
         try {
             const productFound = await productDataMapper.findOne(id);
 
@@ -48,5 +48,5 @@ export const productMiddleware = {
         } catch(error){
             next(new APIError('Internal server error', 500));
         }       
-    }
+    },
 };

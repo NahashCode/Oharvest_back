@@ -1,8 +1,17 @@
 import { productDataMapper } from '../../models/Product.js';
 import { APIError } from '../../services/error/APIError.js';
+import deleteFile from '../../services/file/delete.js';
 
 const baseUrl = '/admin/products';
 const viewDirectory = 'product';
+
+/**
+     * Syntaxe pour utiliser __dirname dans le cadre de ES6
+     */
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const productController = {
     listPage: async function (request, response) {
@@ -58,9 +67,11 @@ export const productController = {
 
     deleteAction: async function (request, response, next) {
         const productFound = request.instance;
-        console.log(productFound);
+        
         try {
             await productDataMapper.delete(productFound);
+
+            deleteFile(join(__dirname,'../../../public/images/'+ request.instance.image));
 
             response.redirect( baseUrl );
         } catch(error) {
