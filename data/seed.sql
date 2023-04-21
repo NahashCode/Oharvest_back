@@ -1,9 +1,9 @@
 INSERT INTO
     category (name)
 VALUES
-    ('Fruits'),
-    ('Légumes'),
-    ('Fleurs');
+    ('Fruit'),
+    ('Légume'),
+    ('Fleur');
 
 INSERT INTO
     plot (name, start_point_longitude, start_point_latitude, end_point_longitude, end_point_latitude)
@@ -37,11 +37,11 @@ VALUES
     ('Carotte', 'carotte.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 5, 10, 2),
     ('Courgette', 'courgette.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 6, 10, 2),
     ('Salade', 'salade.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 4, 10, 2),
-    ('Pommes', 'pomme.png', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 8, 11, 1),
-    ('Fraises', 'fraise.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 5, 9, 1),
+    ('Pomme', 'pomme.png', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 8, 11, 1),
+    ('Fraise', 'fraise.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 5, 9, 1),
     ('Groseille', 'groseille.png', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 5, 6, 1),
     ('Choux', 'choux.png', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 4, 10, 2),
-    ('Tulipes', 'tulipe.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 4, 5, 3),
+    ('Tulipe', 'tulipe.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 4, 5, 3),
     ('Oeillet de poête', 'oeillet_de_poete.png', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 5, 7, 3),
     ('Campanule', 'campanule.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 5, 6, 3),
     ('Pivoine', 'pivoine.png', true, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel enim at turpis vulputate varius vitae non erat. Ut neque eros, finibus sed condimentum in, convallis vel lectus', 5, 6, 3),
@@ -59,8 +59,8 @@ VALUES
 INSERT INTO
     variety (name, description, harvest_begin_at, harvest_end_at, product_id)
 VALUES
-    ('canada','Nunc bibendum egestas turpis ac tempor. Morbi vitae sapien sed nibh pellentesque varius. Pellentesque et diam non nisl faucibus facilisis. Proin posuere maximus velit mattis dignissim. Curabitur consequat mi ut dui lobortis tempus. Ut tincidunt maximus nulla, vel ultricies leo lobortis ac. Duis iaculis massa eu velit commodo accumsan. Cras eu rhoncus turpis.', 1, 2, 4),
-    ('jonagored', 'Nunc bibendum egestas turpis ac tempor. Morbi vitae sapien sed nibh pellentesque varius. Pellentesque et diam non nisl faucibus facilisis. Proin posuere maximus velit mattis dignissim. Curabitur consequat mi ut dui lobortis tempus. Ut tincidunt maximus nulla, vel ultricies leo lobortis ac. Duis iaculis massa eu velit commodo accumsan. Cras eu rhoncus turpis.', 3, 4, 4);
+    ('Canada','Nunc bibendum egestas turpis ac tempor. Morbi vitae sapien sed nibh pellentesque varius. Pellentesque et diam non nisl faucibus facilisis. Proin posuere maximus velit mattis dignissim. Curabitur consequat mi ut dui lobortis tempus. Ut tincidunt maximus nulla, vel ultricies leo lobortis ac. Duis iaculis massa eu velit commodo accumsan. Cras eu rhoncus turpis.', 1, 2, 4),
+    ('Jonagored', 'Nunc bibendum egestas turpis ac tempor. Morbi vitae sapien sed nibh pellentesque varius. Pellentesque et diam non nisl faucibus facilisis. Proin posuere maximus velit mattis dignissim. Curabitur consequat mi ut dui lobortis tempus. Ut tincidunt maximus nulla, vel ultricies leo lobortis ac. Duis iaculis massa eu velit commodo accumsan. Cras eu rhoncus turpis.', 3, 4, 4);
 
 INSERT INTO
     product_in_plot (product_id, plot_id)
@@ -74,3 +74,9 @@ VALUES
     (9,7),
     (9,8),
     (9,9);
+
+INSERT INTO
+    employee (mail, password, firstname, lastname)
+VALUES
+    ('kevin.hesse@oharvest.io', '$2b$10$1Zy6wcGdUh3TCjhlgg8JKetQ95vB/rdXZfSzgKeS5Un2smYg21imK', 'Kevin', 'Hesse'),
+    ('guillaume.felicite@oharvest.io', '$2b$10$1Zy6wcGdUh3TCjhlgg8JKetQ95vB/rdXZfSzgKeS5Un2smYg21imK', 'Guillaume', 'Felicite');

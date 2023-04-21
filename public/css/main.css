@@ -9,6 +9,13 @@
     grid-template-rows: auto;
 }
 
+.login{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .content{
     padding: 2rem 0;
     display: flex;
