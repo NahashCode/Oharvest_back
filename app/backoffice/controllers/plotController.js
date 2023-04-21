@@ -1,5 +1,6 @@
 import { plotDataMapper } from '../../models/Plot.js';
 import { APIError } from '../../services/error/APIError.js';
+import { productInPlotDataMapper } from '../../models/ProductInPlot.js';
 
 const baseUrl = '/admin/plots';
 const viewDirectory = 'plot';
@@ -66,4 +67,30 @@ export const plotController = {
             next(new APIError('Internal server error', 500));
         }
     },
+
+    productsPage: async function (request, response) {
+        const plots = await productInPlotDataMapper.findAll();
+
+        response.render( `${ viewDirectory }/product/list`, { plots } );
+    },
+
+    addProductAction: async function (request, response, next) {
+        try{
+            const updateProductInPlot = await productInPlotDataMapper.create(request.body);
+            response.json(updateProductInPlot);
+        } catch (error) {
+            console.log(error);
+            next(new APIError('Internal server error', 500));
+        }
+    },
+
+    removeProductAction: async function (request, response, next) {
+        try{
+            const updateProductInPlot = await productInPlotDataMapper.delete(request.body);
+            response.json(updateProductInPlot);
+        } catch (error) {
+            console.log(error);
+            next(new APIError('Internal server error', 500));
+        }
+    }
 };
