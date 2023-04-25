@@ -37,8 +37,7 @@ app.use('/api', apiRouter);
 app.use(authRouter);
 
 /** Route dedicated for the back-office service */
-// app.use('/admin', authMiddleware, adminRouter);
-app.use('/admin',  adminRouter);
+app.use('/admin', authMiddleware, adminRouter);
 
 /** Route dedicated for the Swagger service */
 app.use('/docs/api', swaggerRouter);

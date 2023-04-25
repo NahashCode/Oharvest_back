@@ -1,3 +1,5 @@
+TRUNCATE TABLE category, plot, product, variety, product_in_plot, booking, employee RESTART IDENTITY;
+
 INSERT INTO
     category (name)
 VALUES
@@ -25,67 +27,6 @@ VALUES
     ('Secteur 15', 48.757636, 7.416189, 48.757120, 7.410556 ),
     ('Secteur 16', 48.755768, 7.411663, 48.755468, 7.405476 ),
     ('Secteur 17', 48.755446, 7.405444, 48.756283, 7.399290 );
-
-UPDATE plot
-    SET start_point_longitude=48.755446,
-        start_point_latitude=7.405444,
-        end_point_longitude=48.756283,
-        end_point_latitude=7.399290
-WHERE id = 17;
-UPDATE plot
-SET start_point_longitude=48.752209,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 2;
-UPDATE plot
-SET start_point_longitude=48.749171,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 1;
-UPDATE plot
-SET start_point_longitude=48.749171,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 1;
-UPDATE plot
-SET start_point_longitude=48.749171,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 1;
-UPDATE plot
-SET start_point_longitude=48.749171,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 1;
-UPDATE plot
-SET start_point_longitude=48.749171,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 1;
-UPDATE plot
-SET start_point_longitude=48.749171,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 1;
-UPDATE plot
-SET start_point_longitude=48.749171,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 1;
-UPDATE plot
-SET start_point_longitude=48.749171,
-    start_point_latitude=7.426083,
-    end_point_longitude=48.751019,
-    end_point_latitude=7.420575
-WHERE id = 1;
 
 INSERT INTO
     product (name, image, is_available, description, tip, harvest_begin_at, harvest_end_at, category_id)
@@ -137,3 +78,12 @@ INSERT INTO
 VALUES
     ('kevin.hesse@oharvest.io', '$2b$10$1Zy6wcGdUh3TCjhlgg8JKetQ95vB/rdXZfSzgKeS5Un2smYg21imK', 'Kevin', 'Hesse'),
     ('guillaume.felicite@oharvest.io', '$2b$10$1Zy6wcGdUh3TCjhlgg8JKetQ95vB/rdXZfSzgKeS5Un2smYg21imK', 'Guillaume', 'Felicite');
+
+INSERT INTO
+    booking (booking_at, visit_at, slot, name, contact, phone, mail, address, city, zipcode, student_number, group_number, guide_number, transport, is_confirm)
+VALUES
+    ('2023-04-23', '2023-05-06', 'morning', 'Ecole de la poule', 'cocorico', '0311223344', 'coco.rico@poule.io', '10 rue des oeufs', 'poulailler', '92010', 40, 2, 6, 'car', 'false'),
+    ('2023-04-24','2023-05-01','afternoon','Ecole','Jean','0666666666','plop.plop@plop.io','10 rue de la Joi','Nothere','01234',25,2,4,'vroum',null),
+    ('2023-04-24','2023-05-01','morning','Ecole Lambda','Jean','0666666666','plop.plop@plop.io','10 rue de la Joi','Nothere','01234',25,2,4,'car',false),
+    ('2023-04-25','2023-05-07','morning','Ecole','Jean','0666886666','plop.plop@plop.io','10 rue de la Joi','Nothere','01234',25,2,4,'vroum', null),
+    ('2023-04-24','2023-05-01','afternoon','Ecole','Jean','0666666666','plop.plop@plop.io','10 rue de la Joi','Nothere','01234',40,3,4,'bus',true);
