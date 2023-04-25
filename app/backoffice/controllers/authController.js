@@ -17,5 +17,11 @@ export const authController = {
         } else {
             response.redirect('/login');
         }        
-    }
+    },
+    logoutAction: function(request, response){
+        if(request.session.user){
+            delete request.session.user;
+            return response.redirect('/login');
+        }
+    },
 };

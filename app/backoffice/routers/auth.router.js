@@ -8,4 +8,6 @@ const authRouter = Router();
 authRouter.get('/login', authController.loginPage);
 authRouter.post('/login', authValidate.loginBody, employeeMiddleware.loadEmployee , authController.loginAction);
 
+authRouter.get('/logout', authController.logoutAction);
+
 export { authRouter };

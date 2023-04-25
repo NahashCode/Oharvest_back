@@ -8,27 +8,84 @@ VALUES
 INSERT INTO
     plot (name, start_point_longitude, start_point_latitude, end_point_longitude, end_point_latitude)
 VALUES
-    ('Secteur 1', 49.270339, 3.917509, 49.270723, 3.916921),
-    ('Secteur 2', 49.270453, 3.916957, 49.270847, 3.916137),
-    ('Secteur 3', 49.270643, 3.915252, 49.270899, 3.914704),
-    ('Secteur 4', 49.270643, 3.915252, 49.270899, 3.914704),
-    ('Secteur 5', 49.270643, 3.915252, 49.270899, 3.914704),
-    ('Secteur 6', 49.270643, 3.915252, 49.270899, 3.914704),
-    ('Secteur 7', 49.270643, 3.915252, 49.270899, 3.914704),
-    ('Secteur 8', 49.270643, 3.915252, 49.270899, 3.914704),
-    ('Secteur 9', 49.270643, 3.915252, 49.270899, 3.914704),
-    ('Secteur 10', 49.270643, 3.915252, 49.270899, 3.914704),
-    ('Secteur 11', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 12', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 13', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 14', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 15', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 16', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 17', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 18', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 19', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 20', 49.270643, 3.915252, 49.270899, 3.914704 ),
-    ('Secteur 21', 49.270643, 3.915252, 49.270899, 3.914704 );
+    ('Secteur 1', 48.749171, 7.426083, 48.751019, 7.420575),
+    ('Secteur 2', 48.752209, 7.423843, 48.754158, 7.417471),
+    ('Secteur 3', 48.748008, 7.423303, 48.749644, 7.417055),
+    ('Secteur 4', 48.750984, 7.420523, 48.752935, 7.414155),
+    ('Secteur 5', 48.745248, 7.420851, 48.749112, 7.426083),
+    ('Secteur 6', 48.746529, 7.419775, 48.748264, 7.413214),
+    ('Secteur 7', 48.744354, 7.411732, 48.748244, 7.413144),
+    ('Secteur 8', 48.749651, 7.416972, 48.751327, 7.410006),
+    ('Secteur 9', 48.748265, 7.413081, 48.749817, 7.406052),
+    ('Secteur 10', 48.746858, 7.409033, 48.748548, 7.402661),
+    ('Secteur 11', 48.749854, 7.405901, 48.750580, 7.400491 ),
+    ('Secteur 12', 48.751368, 7.409886, 48.752074, 7.403693 ),
+    ('Secteur 13', 48.752913, 7.414138, 48.753793, 7.407528 ),
+    ('Secteur 14', 48.752999, 7.414170, 48.758129, 7.419510 ),
+    ('Secteur 15', 48.757636, 7.416189, 48.757120, 7.410556 ),
+    ('Secteur 16', 48.755768, 7.411663, 48.755468, 7.405476 ),
+    ('Secteur 17', 48.755446, 7.405444, 48.756283, 7.399290 );
+
+UPDATE plot
+    SET start_point_longitude=48.755446,
+        start_point_latitude=7.405444,
+        end_point_longitude=48.756283,
+        end_point_latitude=7.399290
+WHERE id = 17;
+UPDATE plot
+SET start_point_longitude=48.752209,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 2;
+UPDATE plot
+SET start_point_longitude=48.749171,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 1;
+UPDATE plot
+SET start_point_longitude=48.749171,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 1;
+UPDATE plot
+SET start_point_longitude=48.749171,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 1;
+UPDATE plot
+SET start_point_longitude=48.749171,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 1;
+UPDATE plot
+SET start_point_longitude=48.749171,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 1;
+UPDATE plot
+SET start_point_longitude=48.749171,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 1;
+UPDATE plot
+SET start_point_longitude=48.749171,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 1;
+UPDATE plot
+SET start_point_longitude=48.749171,
+    start_point_latitude=7.426083,
+    end_point_longitude=48.751019,
+    end_point_latitude=7.420575
+WHERE id = 1;
 
 INSERT INTO
     product (name, image, is_available, description, tip, harvest_begin_at, harvest_end_at, category_id)

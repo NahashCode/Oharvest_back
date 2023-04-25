@@ -11,3 +11,4 @@ sqitch add 10.alter_table_product_variety -n "Alter column harvest_begin_at and 
 sqitch add 11.change_product_in_plot_view -n "Change the content of the view product in plot"
 sqitch add 12.user_crud -n "create table and crud for user"
 sqitch add 13.booking_crud -n "create table and crud for booking"
+sqitch add 14.add_update_availability_product -n "Add a function which update only the availability of an existing product"
