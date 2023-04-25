@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION employee_insert(d json) RETURNS employee AS $$
         d->>'firstname',
         d->>'lastname'
     ) RETURNING *;
-$$ LANGUAGE SQL;
+$$ LANGUAGE SQL SECURITY DEFINER;
 
 CREATE OR REPLACE FUNCTION employee_update(d json) RETURNS employee AS $$
     UPDATE employee
@@ -47,14 +47,14 @@ CREATE OR REPLACE FUNCTION employee_update(d json) RETURNS employee AS $$
         lastname=d->>'lastname'
         WHERE id=(d->>'id')::int
         RETURNING *;
-$$ LANGUAGE SQL;
+$$ LANGUAGE SQL SECURITY DEFINER;
 
 CREATE OR REPLACE FUNCTION employee_delete(d json) RETURNS employee AS $$
     DELETE
     FROM employee e
     WHERE e.id=(d->>'id')::int
     RETURNING *;
-$$ LANGUAGE SQL;
+$$ LANGUAGE SQL SECURITY DEFINER;
 
 COMMIT;
 
