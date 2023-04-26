@@ -1,4 +1,7 @@
+import { loggerService } from '../logger/logger.js';
 import { APIError } from './APIError.js';
+
+const apiRegExp = new RegExp(/^(\/api.+)$/);
 
 export const errorHandling = {
     /**
@@ -8,7 +11,17 @@ export const errorHandling = {
      * @param {Response} response
      * @param {NextFunction} next
      */
-    manage(error, request, response, next){
+    async manage(error, request, response, next){
+        try {
+            await loggerService.write(request, error);    
+        } catch (error) {
+            console.log(error);
+        }
+
+        if(!request.url.match(apiRegExp) && !request.session.user){
+            return response.redirect('/login');
+        }
+        
         switch (error.statusCode) {
         case 400:
             response.status(400).json('Bad request');
@@ -23,5 +36,5 @@ export const errorHandling = {
     },
     notFound(request, response, next){
         next(new APIError('Not found', 404));
-    }
+    },
 };
