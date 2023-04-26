@@ -23,7 +23,7 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: integer
           example: 1
         bookingAt:
           type: string
@@ -36,9 +36,9 @@ components:
         slot:
           type: string
           enum: 
-            - Morning 
-            - Afternoon
-          example: Morning
+            - morning 
+            - afternoon
+          example: morning
         name:
           type: string
           example: Ecole Lambda
@@ -61,13 +61,13 @@ components:
           type: string
           example: 01000
         studentNumber:
-          type: number
+          type: integer
           example: 50
         groupNumber:
-          type: number
+          type: integer
           example: 2
         guideNumber:
-          type: number
+          type: integer
           example: 4
         transport:
           type: string
@@ -77,7 +77,7 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: integer
           example: 1
         name:
           type: string
@@ -87,7 +87,7 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: integer
           example: 1
         name:
           type: string
@@ -123,12 +123,12 @@ components:
           type: string
           example: Loremp ipsum
         harvestBeginAt:
-          type: int
+          type: integer
           minimum: 1
           maximum: 12
           example: 1
         harvestEndAt:
-          type: int
+          type: integer
           minimum: 1
           maximum: 12
           example: 12
@@ -142,7 +142,7 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: integer
           example: 1
         name:
           type: string
@@ -164,7 +164,7 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: integer
           example: 1
         name:
           type: string
@@ -173,12 +173,12 @@ components:
           type: string
           example: Loremp ipsum
         harvestBeginAt:
-          type: int
+          type: integer
           minimum: 1
           maximum: 12
           example: 1
         harvestEndAt:
-          type: int
+          type: integer
           minimum: 1
           maximum: 12
           example: 12
@@ -200,35 +200,12 @@ paths:
                   $ref: '#components/schemas/Booking'
               example:
                 - id: 1
-                  bookingAt: 2023-02-01
                   visitAt: 2023-02-02
                   slot: Morning
-                  name: Ecole Lambda
-                  contact: John Doe
-                  phone: 06.06.06.06.06
-                  mail: ecole.lambda@oclock.io
-                  address: 01 rue de la Joi
-                  city: Nothere
-                  zipcode: 01000
-                  studentNumber: 20
-                  groupNumber: 1
-                  guideNumber: 1
-                  transport: Bus 
                 - id: 2
-                  bookingAt: 2023-02-01
                   visitAt: 2023-02-02
                   slot: Afternoon
-                  name: Ecole Lambda
-                  contact: John Doe
-                  phone: 06.06.06.06.06
-                  mail: ecole.lambda@oclock.io
-                  address: 01 rue de la Joi
-                  city: Nothere
-                  zipcode: 01000
-                  studentNumber: 50
-                  groupNumber: 3
-                  guideNumber: 6
-                  transport: Voiture 
+                  
     post:
       description: Return one booking
       tags:
@@ -261,9 +238,9 @@ paths:
                 slot:
                   type: string
                   enum: 
-                    - Morning 
-                    - Afternoon
-                  example: Morning
+                    - morning 
+                    - afternoon
+                  example: morning
                 name:
                   type: string
                   example: Ecole Lambda
@@ -286,13 +263,13 @@ paths:
                   type: string
                   example: 01000
                 studentNumber:
-                  type: number
+                  type: integer
                   example: 50
                 groupNumber:
-                  type: number
+                  type: integer
                   example: 2
                 guideNumber:
-                  type: number
+                  type: integer
                   example: 4
                 transport:
                   type: string
@@ -308,7 +285,7 @@ paths:
                 id: 1
                 bookingAt: 2023-02-01
                 visitAt: 2023-02-02
-                slot: Morning
+                slot: morning
                 name: Ecole Lambda
                 contact: John Doe
                 phone: 06.06.06.06.06
@@ -344,7 +321,7 @@ paths:
                 id: 1
                 bookingAt: 2023-02-01
                 visitAt: 2023-02-02
-                slot: Morning
+                slot: morning
                 name: Ecole Lambda
                 contact: John Doe
                 phone: 06.06.06.06.06
@@ -388,8 +365,8 @@ paths:
                 slot:
                   type: string
                   enum: 
-                    - Morning 
-                    - Afternoon
+                    - morning 
+                    - afternoon
                   example: Morning
                 name:
                   type: string
@@ -413,13 +390,13 @@ paths:
                   type: string
                   example: 01000
                 studentNumber:
-                  type: number
+                  type: integer
                   example: 50
                 groupNumber:
-                  type: number
+                  type: integer
                   example: 2
                 guideNumber:
-                  type: number
+                  type: integer
                   example: 4
                 transport:
                   type: string
@@ -435,7 +412,7 @@ paths:
                 id: 1
                 bookingAt: 2023-02-01
                 visitAt: 2023-02-02
-                slot: Morning
+                slot: morning
                 name: Ecole Lambda
                 contact: John Doe
                 phone: 06.06.06.06.06

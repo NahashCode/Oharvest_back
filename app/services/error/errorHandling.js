@@ -18,8 +18,16 @@ export const errorHandling = {
             console.log(error);
         }
 
+        if(request.url === '/api' && !request.session.user){
+            return response.redirect('/docs/api');
+        }
+
         if(!request.url.match(apiRegExp) && !request.session.user){
             return response.redirect('/login');
+        }
+
+        if(request.session.user){
+            return response.render('notFound');
         }
         
         switch (error.statusCode) {
