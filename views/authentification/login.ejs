@@ -8,6 +8,11 @@
     </header>
     <main>
         <form class="box" method="post" action="/login">
+            <% if(locals.error) {%>
+            <div class="message is-danger">
+                <p class="message-body "><%= error.message %></p>
+            </div>
+            <% } %>
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
