@@ -19,7 +19,7 @@ export const categoryController = {
 
     createPage: function (request, response, next) {
         try {
-            response.render( `${ viewDirectory }/create`, { actionLink: `${ baseUrl }/create`} );
+            response.render( `${ viewDirectory }/create` );
         } catch(error) {
             next(new APIError('Internal server error', 500));
         }
