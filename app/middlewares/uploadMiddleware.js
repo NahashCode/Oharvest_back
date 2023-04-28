@@ -9,6 +9,13 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const uploadMiddleware = {
+    /**
+     * Load an image inside the request object
+     * If the image exist, delete the old for new version inside request.instance.
+     * @param {Request} request
+     * @param {Response} response
+     * @param {NextFunction} next
+     */
     insertImageName (request, response, next) {
         if (request.file) {
             request.body.image = request.file.filename;

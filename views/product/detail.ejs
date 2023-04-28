@@ -4,7 +4,7 @@
     <%- include('../partials/aside') %>
     <main class="content">
         <h1>Detail d'un produit</h1>
-        <form action="<%= actionLink %>">
+        <form action="#" method="post">
             <div class="field">
                 <label class="label">Nom</label>
                 <div class="control">
@@ -56,5 +56,16 @@
             <%- include('../components/btn_form', {domain: 'products', element: product}) %>
         </form>
     </main>
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <p>Voulez-vous vraiment supprimer?</p>
+                <a href="#" class="button is-danger">Supprimer</a>
+                <button class="button is-info">Annuler</button>
+            </div>
+        </div>
+    </div>
+    <script src="/js/deleteAction.js"></script>
 </body>
 </html>

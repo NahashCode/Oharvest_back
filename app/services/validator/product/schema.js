@@ -1,5 +1,6 @@
 import Joi from 'joi';
 
+/** A validating schema with Joi module for product */
 export const productSchema = Joi.object({ 
     name: Joi.string().required(),
     isAvailable: Joi.boolean().required(),
@@ -11,6 +12,7 @@ export const productSchema = Joi.object({
     categoryId: Joi.number().integer()
 });
 
+/** A validating schema with Joi module for availablility products */
 export const updateAvailabilityProductSchema = Joi.object({
     id: Joi.number().required(),
     isAvailable: Joi.boolean().required()

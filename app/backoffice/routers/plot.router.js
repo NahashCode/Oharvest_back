@@ -27,11 +27,11 @@ plotRouter.param('id', plotMiddleware.loadPlot);
 /** Route : /admin/plots/:id/detail */
 plotRouter.get('/:id(\\d+)/detail', plotController.detailPage);
 
-/** Route : /admin/categories/:id/edit */
+/** Route : /admin/plots/:id/edit */
 plotRouter.get('/:id(\\d+)/edit', plotController.editPage);
 plotRouter.post('/:id(\\d+)/edit', plotValidate.edit, plotController.editAction);
 
-/** Route : /admin/categories/:id/delete */
+/** Route : /admin/plots/:id/delete */
 plotRouter.get('/:id(\\d+)/delete', plotController.deleteAction);
 
 export { plotRouter };

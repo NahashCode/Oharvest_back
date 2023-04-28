@@ -20,7 +20,6 @@ export const plotMiddleware = {
             } else {
                 next(new APIError('Plots not found', 400));
             }
-
         } catch (error) {
             next(new APIError('Internal server error', 500));
         }

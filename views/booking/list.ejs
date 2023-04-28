@@ -4,6 +4,11 @@
 <%- include('../partials/aside') %>
     <main class="content">
         <h1>Liste des réservation</h1>
+        <% if(locals.event) {%>
+            <div class="message <% if (event.action === 'delete') { %> is-danger <% } else { %> is-success <% } %>">
+                <p class="message-body"><%= event.message %></p>
+            </div>
+        <% } %>
         <table class="table">
             <thead>
                 <th>Id</th>
@@ -16,12 +21,12 @@
             <tbody>
                 <% for(const booking of bookings) { %>
                 <tr>
-                    <th><%= booking.id %></th>
-                    <td><%= booking.bookingAt %></td>
-                    <td><%= booking.visitAt %></td>
-                    <td><%= booking.slot %></td>
-                    <td><%= booking.name %></td>
-                    <td>
+                    <th data-id="<%= booking.id %>"><%= booking.id %></th>
+                    <td data-booking-at="<%= booking.bookingAt %>"><%= booking.bookingAt %></td>
+                    <td data-visit-at="<%= booking.visitAt %>"><%= booking.visitAt %></td>
+                    <td data-slot="<%= booking.slot %>"><%= booking.slot %></td>
+                    <td data-name="<%= booking.name %>"><%= booking.name %></td>
+                    <td data-status="<%= booking.status %>">
                         <% if(booking.status === 'pending') { %>
                             <span class="tag is-warning">En attente</span>
                         <% } else if(booking.status === 'accepted') { %> 

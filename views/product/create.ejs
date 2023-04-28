@@ -4,7 +4,12 @@
     <%- include('../partials/aside') %>
     <main class="content">
         <h1>Création d'un nouveau produit</h1>
-        <form action="<%= actionLink %>" method="post" enctype="multipart/form-data">
+        <form id="formProduct" action="/admin/products/create" method="post" enctype="multipart/form-data">
+            <% if(locals.error) {%>
+                <div class="message is-danger">
+                    <p class="message-body"><%= error.message %></p>
+                </div>
+            <% } %>
             <div class="field">
                 <label class="label">Nom</label>
                 <div class="control">
@@ -55,10 +60,10 @@
             </div>
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-link">Submit</button>
+                    <button type="submit" class="button is-link">Enregistrer</button>
                 </div>
                 <div class="control">
-                    <button class="button is-link is-light">Cancel</button>
+                    <a href="/admin/products" class="button is-link is-light">Annuler</a>
                 </div>
             </div>
         </form>
