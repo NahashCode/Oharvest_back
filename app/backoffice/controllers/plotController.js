@@ -6,29 +6,54 @@ const baseUrl = '/admin/plots';
 const viewDirectory = 'plot';
 
 export const plotController = {
+    /**
+     * Render a list of all plots from the database
+     * @param {Request} request
+     * @param {Response} response
+     */
     listPage: async function(request, response) {
         const plots = await plotDataMapper.findAll();
-        
+
+        if (request.app.locals.event) {
+            response.locals.event = request.app.locals.event;
+
+            delete request.app.locals.event;
+        }
+
         response.render( `${ viewDirectory }/list`, { plots } );
     },
 
-    detailPage: async function (request, response, next) {
+    /**
+     * Render a detail page from one specified plot from the database.
+     * @param {Request} request
+     * @param {Response} response
+     */
+    detailPage: async function (request, response) {
         const plot = request.instance;
 
-        response.render( `${ viewDirectory }/detail`, { plot, actionLink: `${ baseUrl }/${plot.id}/edit` } );
+        response.render( `${ viewDirectory }/detail`, { plot } );
     },
 
-    createPage: function (request, response, next) {
-        try {
-            response.render( `${ viewDirectory }/create`, { actionLink: `${ baseUrl }/create`} );
-        } catch(error) {
-            next(new APIError('Internal server error', 500));
-        }
+    /**
+     * Render the form page in order to create a new plot
+     * @param {Request} request
+     * @param {Response} response
+     */
+    createPage: function (request, response) {
+        response.render( `${ viewDirectory }/create`);
     },
 
+    /**
+     * Create a new plot in the database and redirect to the list page
+     * @param {Request} request
+     * @param {Response} response
+     * @param {NextFunction} next
+     */
     createAction: async function (request, response, next) {
         try {
-            await plotDataMapper.create(request.body);
+            const result = await plotDataMapper.create(request.body);
+
+            request.app.locals.event = {action: 'create', message: result.name + ' a été crée avec succès!!'};
 
             response.redirect( baseUrl );
         } catch(error) {
@@ -36,19 +61,32 @@ export const plotController = {
         }
     },
 
-    editPage: function (request, response, next) {
+    /**
+     * Render a form with the value of the specified plot
+     * @param {Request} request
+     * @param {Response} response
+     */
+    editPage: function (request, response) {
         const plot = request.instance;
 
-        response.render( `${ viewDirectory }/edit`, { plot, actionLink: `${ baseUrl }/${ plot.id }/edit` } );
+        response.render( `${ viewDirectory }/edit`, { plot } );
     },
 
+    /**
+     * Update an existing plot with data provided by the form to the database
+     * @param {Request} request
+     * @param {Response} response
+     * @param {NextFunction} next
+     */
     editAction: async function (request, response, next) {
         const plotFound = request.instance;
 
         const updatedPlot = { ...plotFound, ...request.body };
 
         try {
-            await plotDataMapper.update(updatedPlot);
+            const result = await plotDataMapper.update(updatedPlot);
+
+            request.app.locals.event = {action: 'edit', message: result.name + ' a été édité avec succès!!'};
 
             response.redirect( baseUrl );
         } catch(error) {
@@ -56,11 +94,19 @@ export const plotController = {
         }
     },
 
+    /**
+     * Delete an existing plot and redirect to the list page
+     * @param {Request} request
+     * @param {Response} response
+     * @param {NextFunction} next
+     */
     deleteAction: async function (request, response, next) {
         const plotFound = request.instance;
 
         try {
-            await plotDataMapper.delete(plotFound);
+            const result = await plotDataMapper.delete(plotFound);
+
+            request.app.locals.event = {action: 'delete', message: result.name + ' a été supprimé avec succès!!'};
 
             response.redirect( baseUrl );
         } catch(error) {
@@ -68,28 +114,45 @@ export const plotController = {
         }
     },
 
+    /**
+     * Render the list of all products associated to their corresponding plots
+     * @param {Request} request
+     * @param {Response} response
+     */
     productsPage: async function (request, response) {
         const plots = await productInPlotDataMapper.findAll();
 
         response.render( `${ viewDirectory }/product/list`, { plots } );
     },
 
+    /**
+     * Adding a specified product to a selected plot
+     * @param {Request} request
+     * @param {Response} response
+     * @param {NextFunction} next
+     */
     addProductAction: async function (request, response, next) {
         try{
             const updateProductInPlot = await productInPlotDataMapper.create(request.body);
+
             response.json(updateProductInPlot);
         } catch (error) {
-            console.log(error);
             next(new APIError('Internal server error', 500));
         }
     },
 
+    /**
+     * Remove a specified product to the corresponding plot
+     * @param {Request} request
+     * @param {Response} response
+     * @param {NextFunction} next
+     */
     removeProductAction: async function (request, response, next) {
         try{
             const updateProductInPlot = await productInPlotDataMapper.delete(request.body);
+
             response.json(updateProductInPlot);
         } catch (error) {
-            console.log(error);
             next(new APIError('Internal server error', 500));
         }
     }

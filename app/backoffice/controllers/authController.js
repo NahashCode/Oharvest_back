@@ -44,7 +44,8 @@ export const authController = {
     logoutAction: function(request, response){
         if(request.session.user){
             delete request.session.user;
-            return response.redirect('/login');
         }
+
+        response.redirect('/login');
     },
 };

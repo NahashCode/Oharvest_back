@@ -14,7 +14,6 @@ export const plotMiddleware = {
     async loadPlot(request, response, next, id) {
         try {
             const plotFound = await plotDataMapper.findOne(id);
-
             if ( plotFound ) {
                 request.instance = plotFound;
                 next();

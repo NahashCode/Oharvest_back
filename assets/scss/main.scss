@@ -154,6 +154,10 @@
   }
 }
 
+button.is-danger * {
+  pointer-events: none;
+}
+
 aside {
   background-color: lightgreen;
   padding: 1rem;

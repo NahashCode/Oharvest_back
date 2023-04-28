@@ -1,5 +1,4 @@
 import { categorySchema } from './schema.js';
-import { APIError } from '../../error/APIError.js';
 
 export const categoryValidate = {
     /**
@@ -12,7 +11,7 @@ export const categoryValidate = {
         const { error } = categorySchema.validate(request.body);
 
         if(error){
-            next(new APIError(error, 400));
+            response.render('category/create', { error });
         } else {
             next();
         }
