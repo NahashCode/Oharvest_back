@@ -17,7 +17,10 @@ export const uploadMiddleware = {
      * @param {NextFunction} next
      */
     insertImageName (request, response, next) {
-        if (request.file) {
+
+        if(request.url === '/create' && !request.file){
+            return response.render('admin/form', { error: {message: 'Merci d\'ajouter une image'}, title: 'Création d\'un nouveau produit', action: 'create'  });
+        } else if (request.file) {
             request.body.image = request.file.filename;
             if (request.instance) {
                 deleteFile(join(__dirname,'../../public/images/'+ request.instance.image));

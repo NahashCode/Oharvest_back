@@ -4,7 +4,6 @@ import deleteFile from '../../services/file/delete.js';
 import { productInPlotDataMapper } from '../../models/ProductInPlot.js';
 
 const baseUrl = '/admin/products';
-const viewDirectory = 'product';
 
 /**
  * Syntaxe pour utiliser __dirname dans le cadre de ES6
@@ -29,7 +28,13 @@ export const productController = {
             delete request.app.locals.event;
         }
         
-        response.render( `${ viewDirectory }/list`, { products } );
+        // response.render( `${ viewDirectory }/list`, { products } );
+        response.render( 'admin/list', {
+            entities: products,
+            title: 'Liste des produits',
+            field: 'un nouveau produit',
+            scripts: ['/js/checkAvailability.js']
+        } );
     },
 
     /**
@@ -40,7 +45,11 @@ export const productController = {
     detailPage: async function (request, response) {
         const product = request.instance;
 
-        response.render( `${ viewDirectory }/detail`, { product } );
+        response.render( 'admin/form', {
+            title: 'Détail d\'un produit', 
+            entity: product,
+            action: 'detail'
+        });
     },
 
     /**
@@ -49,7 +58,11 @@ export const productController = {
      * @param {Response} response
      */
     createPage: function (request, response) {
-        response.render( `${ viewDirectory }/create`);
+        // response.render( `${ viewDirectory }/create`);
+        response.render( 'admin/form', {
+            title: 'Création d\'un nouveau produit',
+            action: 'create'
+        } );
     },
 
     /**
@@ -78,7 +91,13 @@ export const productController = {
     editPage: function (request, response) {
         const product = request.instance;
 
-        response.render( `${ viewDirectory }/edit`, { product } );
+        // response.render( `${ viewDirectory }/edit`, { product } );
+        response.render( 'admin/form', {
+            title: 'Modification d\'un produit', 
+            entity: product,
+            action: `${product.id}/edit`
+        });
+        
     },
 
     /**

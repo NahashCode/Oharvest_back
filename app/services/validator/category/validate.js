@@ -12,7 +12,7 @@ export const categoryValidate = {
         const { error } = categorySchema.validate(request.body);
 
         if(error){
-            response.render('category/create', { error });
+            response.render('admin/create', { error, title: 'Création d\'une nouvelle catégorie', action: 'create' });
         } else {
             next();
         }
@@ -29,7 +29,8 @@ export const categoryValidate = {
         const { error } = categorySchema.validate(request.body);
 
         if(error){
-            response.render('category/edit', { error });
+            const category = request.instance;
+            response.render('admin/form', { error, title: 'Edition d\'une catégorie', entity: category, action: 'edit' });
         } else {
             next();
         }

@@ -2,7 +2,6 @@ import { bookingDataMapper } from '../../models/Booking.js';
 import { APIError } from '../../services/error/APIError.js';
 
 const baseUrl = '/admin/bookings';
-const viewDirectory = 'booking';
 
 export const bookingController = {
     /**
@@ -19,7 +18,7 @@ export const bookingController = {
             delete request.app.locals.event;
         }
         
-        response.render( `${ viewDirectory }/list`, { bookings } );
+        response.render( 'admin/list', { entities: bookings, title: 'Liste des réservations', field: 'réservation', hideCreateAction: true, hideDeleteAction: true } );
     },
 
     /**
@@ -30,7 +29,12 @@ export const bookingController = {
     detailPage: async function (request, response) {
         const booking = request.instance;
 
-        response.render( `${ viewDirectory }/detail`, { booking } );
+        response.render( 'admin/form', {
+            title: 'Détail d\'une réservation', 
+            entity: booking,
+            action: 'detail',
+            hideDeleteAction: true
+        });
     },
 
     /**
@@ -41,7 +45,12 @@ export const bookingController = {
     editPage: function (request, response) {
         const booking = request.instance;
 
-        response.render( `${ viewDirectory }/edit`, { booking } );
+        response.render( 'admin/form', {
+            title: 'Edition de la réservation', 
+            entity: booking, 
+            action: `${booking.id}/edit`,
+            hideDeleteAction: true
+        });
     },
 
     /**

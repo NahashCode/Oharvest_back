@@ -1,5 +1,4 @@
 import { varietySchema } from './schema.js';
-import { APIError } from '../../error/APIError.js';
 
 export const varietyValidate = {
     /**
@@ -13,7 +12,7 @@ export const varietyValidate = {
         const { error } = varietySchema.validate(request.body);
 
         if(error) {
-            response.render('variety/create', { error });
+            response.render('admin/form', { error, title: 'Création d\'une nouvelle variété', action: 'create'  });
         } else {
             next();
         }
@@ -30,7 +29,8 @@ export const varietyValidate = {
         const { error } = varietySchema.validate(request.body);
 
         if(error) {
-            response.render('variety/edit', { error });
+            const variety = request.instance;
+            response.render('admin/form', { error, title: 'Edition de la variété', entity: variety, action: `${variety.id}/edit` });
         } else {
             next();
         }

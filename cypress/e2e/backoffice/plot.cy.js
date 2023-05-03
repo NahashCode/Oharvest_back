@@ -12,7 +12,7 @@ describe('Testing scenario for plot', () => {
 
         cy.url().should('match', /(?:admin\/plots\/create)/);
 
-        cy.get('#formPlot').as('form');
+        cy.get('form').as('form');
 
         cy.get('@form').find('input').should('have.value', '');
 
@@ -26,8 +26,6 @@ describe('Testing scenario for plot', () => {
                 expect(text).to.have.text('Le champ doit être rempli.');
                 expect(text).to.have.class('message-body');
             });
-        // .should('have.text', 'Le champ doit être rempli.')
-        // .should('have.class', 'message-body');
     });
 
     it('should create a new plot', () => {
@@ -35,7 +33,7 @@ describe('Testing scenario for plot', () => {
 
         cy.url().should('match', /(?:admin\/plots\/create)/);
 
-        cy.get('#formPlot').as('form');
+        cy.get('form').as('form');
 
         cy.get('@form').find('input').type('test');
 
@@ -47,9 +45,7 @@ describe('Testing scenario for plot', () => {
         cy.get('@table').should('have.class', 'table');
 
         cy.get('@table')
-            .find('#plot-test').as('raw');
-        cy.get('@raw')
-            .find('td[data-name="test"]')
+            .find('td[data-entity-name="test"]')
             .should((text)=> {
                 expect(text).to.have.text('test');
             });
@@ -61,11 +57,11 @@ describe('Testing scenario for plot', () => {
         cy.get('@table').should('have.class', 'table');
         
         cy.get('@table')
-            .find('#plot-test').as('raw');
+            .find('td[data-entity-name="test"]').parent().as('raw');
 
         cy.get('@raw').find('a[href*="edit"]').click();
 
-        cy.get('#formPlotEdit').as('form');
+        cy.get('form').as('form');
 
         cy.get('@form').find('input').clear().type('test2');
 
@@ -80,7 +76,7 @@ describe('Testing scenario for plot', () => {
         cy.get('@table').should('have.class', 'table');
         
         cy.get('@table')
-            .find('#plot-test2').as('raw');
+            .find('td[data-entity-name="test2"]').parent().as('raw');
 
         cy.get('@raw').find('button.button.is-danger').click();
 

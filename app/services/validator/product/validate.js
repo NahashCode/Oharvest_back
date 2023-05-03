@@ -13,7 +13,7 @@ export const productValidate = {
         const { error } = productSchema.validate(request.body);
 
         if(error) {
-            response.render('product/create', { error });
+            response.render('admin/form', { error, title: 'Création d\'un nouveau produit', action: 'create'  });
         } else {
             next();
         }
@@ -30,7 +30,8 @@ export const productValidate = {
         const { error } = productSchema.validate(request.body);
 
         if(error) {
-            response.render('product/edit', { error });
+            const product = request.instance;
+            response.render('admin/form', { error, title: 'Edition d\'un produit', entity: product, action: `${product.id}/edit` });
         } else {
             next();
         }

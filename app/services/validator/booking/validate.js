@@ -31,7 +31,8 @@ export const bookingValidate = {
 
         if(error){
             const booking = request.instance;
-            response.render('booking/edit', { error, booking });
+            response.render('admin/form', { error, title: 'Edition d\'une réservation', entity: booking, action: 'edit' });
+
         } else {
             next();
         }

@@ -2,7 +2,6 @@ import { categoryDataMapper } from '../../models/Category.js';
 import { APIError } from '../../services/error/APIError.js';
 
 const baseUrl = '/admin/categories';
-const viewDirectory = 'category';
 
 export const categoryController = {
     /**
@@ -19,7 +18,7 @@ export const categoryController = {
             delete request.app.locals.event;
         }
 
-        response.render( `${ viewDirectory }/list`, { categories } );
+        response.render( 'admin/list', { entities: categories, title: 'Liste des catégories', field: 'une nouvelle catégorie' } );
     },
 
     /**
@@ -30,7 +29,11 @@ export const categoryController = {
     detailPage: async function (request, response) {
         const category = request.instance;
 
-        response.render( `${ viewDirectory }/detail`, { category } );
+        response.render( 'admin/form', {
+            title: 'Détail d\'une catégorie', 
+            entity: category,
+            action: 'detail'
+        });
     },
 
     /**
@@ -39,7 +42,7 @@ export const categoryController = {
      * @param {Response} response
      */
     createPage: function (request, response) {
-        response.render( `${ viewDirectory }/create` );
+        response.render( 'admin/form', {title: 'Création d\'une nouvelle catégorie', action: 'create'} );
     },
 
     /**
@@ -68,7 +71,11 @@ export const categoryController = {
     editPage: function (request, response) {
         const category = request.instance;
 
-        response.render( `${ viewDirectory }/edit`, { category } );
+        response.render( 'admin/form', { 
+            title: 'Edition de la catégorie',
+            entity: category,
+            action: `${category.id}/edit`
+        });
         
     },
 

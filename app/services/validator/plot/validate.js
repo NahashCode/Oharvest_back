@@ -12,7 +12,7 @@ export const plotValidate = {
         const { error } = plotSchema.validate(request.body);
 
         if(error){
-            response.render('plot/create', { error });
+            response.render('admin/form', { error, title: 'Création d\'une nouvelle parcelle', action: 'create'  });
         } else {
             next();
         }
@@ -30,7 +30,7 @@ export const plotValidate = {
 
         if(error){
             const plot = request.instance;
-            response.render('plot/edit', { error, plot });
+            response.render('admin/form', { error, title: 'Edition d\'une parcelle', entity: plot, action: `${plot.id}/edit` });
         } else {
             next();
         }

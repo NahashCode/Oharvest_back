@@ -3,7 +3,6 @@ import { APIError } from '../../services/error/APIError.js';
 import { productInPlotDataMapper } from '../../models/ProductInPlot.js';
 
 const baseUrl = '/admin/plots';
-const viewDirectory = 'plot';
 
 export const plotController = {
     /**
@@ -20,7 +19,8 @@ export const plotController = {
             delete request.app.locals.event;
         }
 
-        response.render( `${ viewDirectory }/list`, { plots } );
+        // response.render( `${ viewDirectory }/list`, { plots } );
+        response.render( 'admin/list', { entities: plots, title: 'Liste des parcelles', field: 'une nouvelle parcelle' } );
     },
 
     /**
@@ -31,7 +31,11 @@ export const plotController = {
     detailPage: async function (request, response) {
         const plot = request.instance;
 
-        response.render( `${ viewDirectory }/detail`, { plot } );
+        response.render( 'admin/form', {
+            title: 'Détail de la parcelle', 
+            entity: plot, 
+            action: 'detail'
+        });
     },
 
     /**
@@ -40,7 +44,7 @@ export const plotController = {
      * @param {Response} response
      */
     createPage: function (request, response) {
-        response.render( `${ viewDirectory }/create`);
+        response.render( 'admin/form', {title: 'Creation d\'une nouvelle parcelle', action: 'create'});
     },
 
     /**
@@ -69,7 +73,12 @@ export const plotController = {
     editPage: function (request, response) {
         const plot = request.instance;
 
-        response.render( `${ viewDirectory }/edit`, { plot } );
+        // response.render( `${ viewDirectory }/edit`, { plot } );
+        response.render( 'admin/form', {
+            title: 'Edition de la parcelle', 
+            entity: plot, 
+            action: `${plot.id}/edit`
+        });
     },
 
     /**
@@ -122,7 +131,16 @@ export const plotController = {
     productsPage: async function (request, response) {
         const plots = await productInPlotDataMapper.findAll();
 
-        response.render( `${ viewDirectory }/product/list`, { plots } );
+        // response.render( `${ viewDirectory }/product/list`, { plots } );
+        response.render( 'admin/list', {
+            entities: plots,
+            title: 'Liste des parcelles avec leurs produits',
+            field: 'produit',
+            hideCreateAction: true,
+            hideListActions: true,
+            modals: ['plot/product/modal'],
+            scripts: ['/js/productInPlot.js']
+        });
     },
 
     /**

@@ -11,7 +11,7 @@ varietyRouter.get('/', varietyController.listPage);
 
 /** Route : /admin/varieties/create */
 varietyRouter.get('/create', productMiddleware.loadProducts, varietyController.createPage);
-varietyRouter.post('/create', varietyValidate.create, varietyController.createAction);
+varietyRouter.post('/create',productMiddleware.loadProducts, varietyValidate.create, varietyController.createAction);
 
 /** Middleware called when the param id is present */
 varietyRouter.param('id', varietyMiddleware.loadVariety);
@@ -21,7 +21,7 @@ varietyRouter.get('/:id(\\d+)/detail', productMiddleware.loadProducts, varietyCo
 
 /** Route : /admin/varieties/:id/edit */
 varietyRouter.get('/:id(\\d+)/edit', productMiddleware.loadProducts, varietyController.editPage);
-varietyRouter.post('/:id(\\d+)/edit', varietyValidate.edit, varietyController.editAction);
+varietyRouter.post('/:id(\\d+)/edit', productMiddleware.loadProducts, varietyValidate.edit, varietyController.editAction);
 
 /** Route : /admin/varieties/:id/delete */
 varietyRouter.get('/:id(\\d+)/delete', varietyController.deleteAction);

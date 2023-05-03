@@ -1,5 +1,5 @@
 const deleteAction = {
-    modal: document.querySelector('div.modal'),
+    modal: document.querySelector('div.modal#delete-modal'),
     /** Retrieve all elements which need addEvent. */
     init(){
         const buttons = document.querySelectorAll('button.button.is-danger');

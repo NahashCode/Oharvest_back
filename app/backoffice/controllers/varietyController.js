@@ -2,7 +2,6 @@ import { varietyDataMapper } from '../../models/Variety.js';
 import { APIError } from '../../services/error/APIError.js';
 
 const baseUrl = '/admin/varieties';
-const viewDirectory = 'variety';
 
 export const varietyController = {
     /**
@@ -19,7 +18,7 @@ export const varietyController = {
             delete request.app.locals.event;
         }
         
-        response.render( `${ viewDirectory }/list`, { varieties } );
+        response.render( 'admin/list', { entities: varieties, title: 'Liste des variétés', field: 'une nouvelle variété' } );
     },
 
     /**
@@ -30,7 +29,11 @@ export const varietyController = {
     detailPage: function (request, response) {
         const variety = request.instance;
 
-        response.render( `${ viewDirectory }/detail`, { variety } );
+        response.render( 'admin/form', {
+            title: 'Détail d\'une variété', 
+            entity: variety,
+            action: 'detail'
+        });
     },
 
     /**
@@ -39,7 +42,11 @@ export const varietyController = {
      * @param {Response} response
      */
     createPage: function (request, response) {
-        response.render( `${ viewDirectory }/create`);
+        response.render( 'admin/form', {
+            title: 'Création d\'une nouvelle variété', 
+            action: 'create'
+        });
+
     },
 
     /**
@@ -68,7 +75,11 @@ export const varietyController = {
     editPage: function (request, response) {
         const variety = request.instance;
 
-        response.render( `${ viewDirectory }/edit`, { variety } );
+        response.render( 'admin/form', {
+            title: 'Edition de la variété', 
+            entity: variety, 
+            action: `${variety.id}/edit`
+        });
     },
 
     /**

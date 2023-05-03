@@ -15,6 +15,14 @@ export class Booking extends CoreDataMapper {
 
         return result.rows;
     }
+
+    async findBookingPending(){
+        const query = `SELECT * FROM ${this.tableName}_select WHERE status = 'pending' AND "visitAt"::date > now()::date ORDER BY "visitAt"`;
+
+        const result = await this.client.query(query);
+        
+        return result.rows;
+    }
 }
 
 export const bookingDataMapper = new Booking(pool);
