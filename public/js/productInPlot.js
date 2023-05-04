@@ -20,7 +20,11 @@ const app = {
         formModal.addEventListener('submit', app.handleCreateAction );
         cancelButton.addEventListener('click', app.handleCloseModal);
 
-        fetch('/api/products/available')
+        fetch('/api/products/available', {
+            headers: {
+                'Authorization': ']Fw[ZS9+PEIzT|uX:;&x5b:q@P!2h'
+            }
+        })
             .then(response => response.json())
             .then((data) => {
                 app.productAvailable = [...data];
